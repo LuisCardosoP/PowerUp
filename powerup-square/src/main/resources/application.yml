@@ -1,0 +1,24 @@
+
+spring:
+  name: plazoleta
+  jpa:
+
+    generate-ddl: 'true'
+    database: MYSQL
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: 'true'
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/plazoleta
+    username : root
+    password: Pepita123.
+
+server:
+  port: 8282
