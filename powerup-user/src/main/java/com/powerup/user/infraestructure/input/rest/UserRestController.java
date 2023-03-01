@@ -66,7 +66,7 @@ public class UserRestController {
             @ApiResponse(responseCode = "201", description = "User created", content = @Content),
             @ApiResponse(responseCode = "409", description = "USer already exists", content = @Content)
     })
-    @GetMapping("/GET/usuarioById/{id}")
+    @GetMapping("/usuarioById/{id}")
     public UserResponse getUserById(@PathVariable Long id){
 
         UserResponse userResponse = userHandler.getUser(id);

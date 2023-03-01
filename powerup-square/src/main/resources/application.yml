@@ -1,6 +1,5 @@
 
 spring:
-  name: plazoleta
   jpa:
 
     generate-ddl: 'true'
@@ -21,4 +20,4 @@ spring:
     password: Pepita123.
 
 server:
-  port: 8282
+  port: 8080

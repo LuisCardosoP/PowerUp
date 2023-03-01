@@ -2,6 +2,8 @@ package com.powerup.square.infraestructure.input.rest;
 
 
 import com.powerup.square.application.dto.PlateRequest;
+import com.powerup.square.application.dto.PlateResponse;
+import com.powerup.square.application.dto.PlateUpdatingRequest;
 import com.powerup.square.application.handler.IPlateHandler;
 import com.powerup.square.infraestructure.out.jpa.entity.PlateEntity;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,9 +31,18 @@ public class PlateRestController {
             @ApiResponse(responseCode = "409", description = "Plate already exists", content = @Content)
     })
     @PostMapping("/createPlate/")
-    public ResponseEntity<Void> savePlateEntity(@RequestBody @Validated PlateRequest plateRequest){
+    public ResponseEntity<Void> savePlateEntity(@Validated @RequestBody  PlateRequest plateRequest){
         plateHandler.savePlate(plateRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+    @Operation(summary = "Get plates by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Plate gotten", content = @Content),
+            @ApiResponse(responseCode = "409", description = "Plate doesn't exists", content = @Content)
+    })
+    @GetMapping("/getPlate/{id}")
+    public PlateResponse getAllPlateById(@PathVariable Long id){
+        return plateHandler.getPlate(id);
     }
 
     @Operation(summary = "Get plates")
@@ -49,8 +60,9 @@ public class PlateRestController {
             @ApiResponse(responseCode = "201", description = "Plate edited successfully", content = @Content)
     })
     @PutMapping("/putPlate/")
-    public ResponseEntity<Void> editPlate(@RequestBody PlateEntity plateEntity){
-        return null;
+    public ResponseEntity<Void> editPlate(@RequestBody PlateUpdatingRequest plateUpdatingRequest){
+        plateHandler.updatePlate(plateUpdatingRequest);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }

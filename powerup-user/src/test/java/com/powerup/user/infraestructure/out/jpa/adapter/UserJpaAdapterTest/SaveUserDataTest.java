@@ -8,13 +8,13 @@ import com.powerup.user.infraestructure.out.jpa.entity.UserEntity;
 public class SaveUserDataTest {
 
     public static User obtainUser(){
-        User user = new User(-1L,"Richard","Roe","3013218602","annie24@gmail.com",
-                "aa78",obtainRole(),"1017148689");
+        User user = new User(-1L,"juan","cardoso","3013237026","juan@gmail.com",
+                "dasd343",obtainRole(),"100042144");
         return user;
     }
 
     public static Role obtainRole(){
-        Role role = new Role(0L,"Admin","Administer all stuff");
+        Role role = new Role(0L,"Admin","Adminid");
         return role;
 
     }
@@ -22,12 +22,12 @@ public class SaveUserDataTest {
     public static UserEntity obtainUserEntity(){
         UserEntity userEntity = new UserEntity();
         userEntity.setId(1L);
-        userEntity.setName("Richard");
-        userEntity.setLastName("Roe");
-        userEntity.setPhone("3013218602");
-        userEntity.setEmail("angiep2008@gmail.com");
-        userEntity.setPassword("aa78");
-        userEntity.setIdDocument("1017148689");
+        userEntity.setName("juan");
+        userEntity.setLastName("carodoso");
+        userEntity.setPhone("3013237026");
+        userEntity.setEmail("ajuan@gmail.com");
+        userEntity.setPassword("dasd343");
+        userEntity.setIdDocument("100042144");
 
         return userEntity;
     }
@@ -35,7 +35,7 @@ public class SaveUserDataTest {
     public static RoleEntity obtainRoleEntity(){
         RoleEntity roleEntity = new RoleEntity();
         roleEntity.setId(1L);
-        roleEntity.setDescription("Administer all stuff");
+        roleEntity.setDescription("Adminid");
         roleEntity.setName("Admin");
 
         return roleEntity;

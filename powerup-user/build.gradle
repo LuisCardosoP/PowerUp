@@ -40,20 +40,25 @@ dependencies {
 	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
 	implementation "org.springdoc:springdoc-openapi-ui:${openApiVersion}"
 	implementation "org.springdoc:springdoc-openapi-webflux-ui:${openApiVersion}"
-	implementation "org.springframework.security:spring-security-crypto"
+	implementation "org.springframework.security:spring-security-crypto" // encriptamiento
 	implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final'
-	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.1.4'
-	implementation 'io.github.openfeign:feign-okhttp:9.2.0'
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.1.4' // comsumir micro HTTP
+	implementation 'io.github.openfeign:feign-okhttp:9.2.0' // conexion micro
 	implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
 	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
-	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
-
-
-	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2', 'io.jsonwebtoken:jjwt-jackson:0.11.2'
 
 
 	testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
-	testImplementation 'org.springframework.security:spring-security-test'
+
+	// security
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	//testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//testImplementation 'org.springframework.security:spring-security-test'
+
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
 
 }
 
