@@ -33,7 +33,7 @@ public class Security {
                 .antMatchers("/user/proprietary").hasAuthority("ROLE_ADMINISTRADOR")
                 .antMatchers("/square/restaurant").hasAuthority("ROLE_ADMINISTRADOR")
                 .antMatchers("/user/employee/{idRole}").hasAuthority("ROLE_PROPIETARIO")
-               // .antMatchers("/square/createPlate/").hasAuthority("ROLE_PROPIETARIO")
+                .antMatchers("/square/createPlate/").hasAuthority("ROLE_PROPIETARIO")
 
                 //.antMatchers(HttpMethod.GET, "/api/v1/user/getId/**").hasAnyAuthority("ROLE_Propietario","ROLE_Empleado")
                 //.antMatchers("/api/v1/object/**").hasAuthority("ROLE_Administrador")
