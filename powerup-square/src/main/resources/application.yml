@@ -1,5 +1,6 @@
 
 spring:
+  name: plazoleta
   jpa:
 
     generate-ddl: 'true'

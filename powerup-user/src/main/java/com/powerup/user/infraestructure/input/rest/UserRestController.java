@@ -21,26 +21,26 @@ import java.util.List;
 
 public class UserRestController {
     private final IUserHandler userHandler;
-    @Operation(summary = "Agregar propietario")
+    @Operation(summary = "Add propietario")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User created", content = @Content),
             @ApiResponse(responseCode = "409", description = "USer already exists", content = @Content)
     })
-    @PostMapping("/Propietario/{idRole}")
-    public ResponseEntity<Void> saveUserEntityOwner(@Validated @RequestBody UserRequest userRequest, @PathVariable Long idRole){
-        if(idRole == 2) {
+    @PostMapping("/proprietary")
+    public ResponseEntity<Void> saveUserEntityProprietary(@Validated @RequestBody UserRequest userRequest){
+//        if(idRole == 2) {
             userHandler.saveUser(userRequest, 2L);
             return ResponseEntity.status(HttpStatus.CREATED).build();
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//        }
+//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @Operation(summary = "Agregar Empleado")
+    @Operation(summary = "Add Employee")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User created", content = @Content),
             @ApiResponse(responseCode = "409", description = "USer already exists", content = @Content)
     })
-    @PostMapping("/Empleado/{idRole}")
+    @PostMapping("/employee/{idRole}")
     public ResponseEntity<Void> saveUserEntityEmployee(@Validated @RequestBody UserRequest userRequest, @PathVariable Long idRole){
         if(idRole == 3){
                 userHandler.saveUser(userRequest, 3L);
@@ -50,23 +50,23 @@ public class UserRestController {
 
     }
 
-    @Operation(summary = "Agregar Cliente")
+    @Operation(summary = "Add Client")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User created", content = @Content),
             @ApiResponse(responseCode = "409", description = "USer already exists", content = @Content)
     })
-    @PostMapping("/Cliente")
+    @PostMapping("/client")
     public ResponseEntity<Void> saveUserEntityClient(@Validated @RequestBody UserRequest userRequest){
         userHandler.saveUser(userRequest, 4L);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @Operation(summary = "Obtener user por ID")
+    @Operation(summary = "Obtain user by id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User created", content = @Content),
             @ApiResponse(responseCode = "409", description = "USer already exists", content = @Content)
     })
-    @GetMapping("/usuarioById/{id}")
+    @GetMapping("/userById/{id}")
     public UserResponse getUserById(@PathVariable Long id){
 
         UserResponse userResponse = userHandler.getUser(id);

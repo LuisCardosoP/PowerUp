@@ -1,5 +1,6 @@
 package com.powerup.user.infraestructure.input.rest;
 
+import com.powerup.user.application.dto.PlateRequest;
 import com.powerup.user.application.dto.RestaurantRequest;
 import com.powerup.user.infraestructure.RestaurateClientFeign.RestauranteClient.RestaurantClient;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SquareRestController {
     private final RestaurantClient restaurantClient;
+
     @PostMapping("/restaurant")
     public ResponseEntity<RestaurantRequest> saveRestaurant(@RequestBody RestaurantRequest restaurantRequest){
         RestaurantRequest restaurant = restaurantClient.saveRestaurante(restaurantRequest).getBody();
@@ -22,5 +24,15 @@ public class SquareRestController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(restaurantRequest);
+    }
+
+
+    @PostMapping("/createPlate/")
+    public ResponseEntity<PlateRequest> savePlateEntity( @RequestBody PlateRequest plateRequest){
+        PlateRequest plate = restaurantClient.savePlate(plateRequest).getBody();
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(plateRequest);
     }
 }

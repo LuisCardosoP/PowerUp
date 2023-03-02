@@ -20,7 +20,7 @@ public class RestaurantRequest {
     @Pattern(regexp = "^(\\+57)?3\\d{9}$", message = "The phone must be numeric")
     private String phone;
 
-
+    @NotBlank (message = "The url field is mandatory")
     private String urlLogo;
 
     @Pattern(regexp = "^[0-9]*$", message = "The NIT must be numeric")
