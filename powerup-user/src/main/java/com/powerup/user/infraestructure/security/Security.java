@@ -28,12 +28,18 @@ public class Security {
                 .authorizeHttpRequests()
 
                 .antMatchers("/api/v1/auth/**").permitAll()
-                .antMatchers("/swagger-ui/").permitAll()
 
+               // .antMatchers("/swagger-ui/").permitAll()
+                 .antMatchers("/api/v1/auth/**", "/swagger-ui/**", "/swagger-resources/**", "/api/v1/user/client/**", "/v3/api-docs/**", "/v2/api-docs/**").permitAll()
                 .antMatchers("/user/proprietary").hasAuthority("ROLE_ADMINISTRADOR")
                 .antMatchers("/square/restaurant").hasAuthority("ROLE_ADMINISTRADOR")
                 .antMatchers("/user/employee/{idRole}").hasAuthority("ROLE_PROPIETARIO")
                 .antMatchers("/square/createPlate/").hasAuthority("ROLE_PROPIETARIO")
+                .antMatchers("/square/putPlate/").hasAuthority("ROLE_PROPIETARIO")
+
+
+
+                //.antMatchers("/api/v1/auth/*", "/swagger-ui/", "/swagger-resources/", "/api/v1/user/client/", "/v3/api-docs/", "/v2/api-docs/*").permitAll()
 
                 //.antMatchers(HttpMethod.GET, "/api/v1/user/getId/**").hasAnyAuthority("ROLE_Propietario","ROLE_Empleado")
                 //.antMatchers("/api/v1/object/**").hasAuthority("ROLE_Administrador")

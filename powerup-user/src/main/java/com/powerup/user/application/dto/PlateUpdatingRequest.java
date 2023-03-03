@@ -1,4 +1,4 @@
-package com.powerup.square.application.dto;
+package com.powerup.user.application.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +12,6 @@ public class PlateUpdatingRequest {
     @NotBlank
     private String description;
     private Long price;
-
     private Long idOwner;
+
 }

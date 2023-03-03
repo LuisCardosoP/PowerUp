@@ -1,6 +1,7 @@
 package com.powerup.user.infraestructure.RestaurateClientFeign.RestauranteClient;
 
 import com.powerup.user.application.dto.PlateRequest;
+import com.powerup.user.application.dto.PlateUpdatingRequest;
 import com.powerup.user.application.dto.RestaurantRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -17,5 +18,6 @@ public interface RestaurantClient {
     @RequestMapping(method = RequestMethod.POST, value = "/plates/createPlate/")
     public ResponseEntity<PlateRequest> savePlate(@RequestBody PlateRequest restaurantRequest);
 
-
+    @RequestMapping(method = RequestMethod.PUT, value = "plates/putPlate/")
+    public ResponseEntity<Void> editPlate(@RequestBody PlateUpdatingRequest plateUpdatingRequest);
 }
