@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Getter
@@ -15,6 +16,8 @@ public class RestaurantRequest {
     private String name;
     @NotBlank (message = "The field address is mandatory")
     private String address;
+
+    @NotNull (message = "El campo idOwner es obligatorio")
     private Long idOwner;
     @NotBlank (message = "The field url is mandatory")
     @Pattern(regexp = "^(\\+57)?3\\d{9}$", message = "The phone must be numeric")

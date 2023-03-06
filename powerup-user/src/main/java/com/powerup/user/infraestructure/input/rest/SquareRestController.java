@@ -5,6 +5,10 @@ import com.powerup.user.application.dto.PlateUpdatingRequest;
 import com.powerup.user.application.dto.RestaurantRequest;
 import com.powerup.user.infraestructure.RestaurateClientFeign.RestauranteClient.RestaurantClient;
 import com.powerup.user.infraestructure.out.jpa.repository.IUserRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +25,12 @@ public class SquareRestController {
 
     private final IUserRepository userRepository;
 
+
+    @Operation(summary = "Add restaurante")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "User restaurant", content = @Content),
+            @ApiResponse(responseCode = "409", description = "restaurant already exists", content = @Content)
+    })
     @PostMapping("/restaurant")
     public ResponseEntity<RestaurantRequest> saveRestaurant(@RequestBody RestaurantRequest restaurantRequest){
         RestaurantRequest restaurant = restaurantClient.saveRestaurante(restaurantRequest).getBody();
@@ -30,7 +40,11 @@ public class SquareRestController {
                 .body(restaurantRequest);
     }
 
-
+    @Operation(summary = "Add plate")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "plate created", content = @Content),
+            @ApiResponse(responseCode = "409", description = "plate already exists", content = @Content)
+    })
     @PostMapping("/createPlate/")
     public ResponseEntity<PlateRequest> savePlateEntity( @RequestBody PlateRequest plateRequest){
 
@@ -38,6 +52,12 @@ public class SquareRestController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+
+    @Operation(summary = "put plate")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "put created", content = @Content),
+            @ApiResponse(responseCode = "409", description = "put already exists", content = @Content)
+    })
         @PutMapping("/putPlate/")
         public ResponseEntity<Void> editPlate(@Validated @RequestBody PlateUpdatingRequest plateUpdatingRequest){
             plateUpdatingRequest.setIdOwner(userRepository.findByEmail(userLoginApplication()).get().getId());
@@ -45,7 +65,7 @@ public class SquareRestController {
             return ResponseEntity.status(HttpStatus.OK).build();
         }
 
-    public static String userLoginApplication() {
+    public static String userLoginApplication() { // leer token
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = null;
         if (principal instanceof UserDetails) {

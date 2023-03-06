@@ -23,7 +23,7 @@ public interface IUserMapper {
             @Mapping(target="email", source="email"),
             @Mapping(target="password", source="password")
     })
-    UserEntity toEntity(User user);
+    UserEntity toEntity(User user);// recibo el usaurio y lo convierto a la entidad
     User toUser(UserEntity userEntity);
     List<User> toUser(List<UserEntity> userEntity);
 }

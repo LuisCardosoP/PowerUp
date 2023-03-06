@@ -15,6 +15,8 @@ public class RestaurantRequest {
     private String name;
     @NotBlank (message = "The field address is mandatory")
     private String address;
+
+
     private Long idOwner;
     @NotBlank (message = "The field url is mandatory")
     @Pattern(regexp = "^(\\+57)?3\\d{9}$", message = "The phone must be numeric")
