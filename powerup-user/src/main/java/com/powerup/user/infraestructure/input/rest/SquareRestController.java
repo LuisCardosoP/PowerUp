@@ -2,6 +2,7 @@ package com.powerup.user.infraestructure.input.rest;
 
 import com.powerup.user.application.dto.PlateRequest;
 import com.powerup.user.application.dto.PlateUpdatingRequest;
+import com.powerup.user.application.dto.PlateUpdatingStateRequest;
 import com.powerup.user.application.dto.RestaurantRequest;
 import com.powerup.user.infraestructure.RestaurateClientFeign.RestauranteClient.RestaurantClient;
 import com.powerup.user.infraestructure.out.jpa.repository.IUserRepository;
@@ -64,6 +65,14 @@ public class SquareRestController {
             restaurantClient.editPlate(plateUpdatingRequest);
             return ResponseEntity.status(HttpStatus.OK).build();
         }
+
+    @PutMapping("/putActivate/")
+    public ResponseEntity<Void> editPlate(@RequestBody PlateUpdatingStateRequest plateUpdatingStateRequest){
+        restaurantClient.activatePlate(plateUpdatingStateRequest);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+
 
     public static String userLoginApplication() { // leer token
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

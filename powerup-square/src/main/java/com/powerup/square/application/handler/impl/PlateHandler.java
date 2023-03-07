@@ -3,6 +3,7 @@ package com.powerup.square.application.handler.impl;
 import com.powerup.square.application.dto.PlateRequest;
 import com.powerup.square.application.dto.PlateResponse;
 import com.powerup.square.application.dto.PlateUpdatingRequest;
+import com.powerup.square.application.dto.PlateUpdatingStateRequest;
 import com.powerup.square.application.handler.IPlateHandler;
 import com.powerup.square.application.mapper.IPlateRequestMapper;
 import com.powerup.square.application.mapper.IPlateResponseMapper;
@@ -58,4 +59,16 @@ public class PlateHandler implements IPlateHandler {
         if(plateUpdatingRequest.getPrice() > 0) plate.setPrice(plateUpdatingRequest.getPrice());
         iPlateServicePort.updatePlate(plate);
     }
+
+    // metodo para el estado del plato
+    @Override
+    public void activatePlate(PlateUpdatingStateRequest plateUpdatingStateRequest) {
+        Plate plate = iPlateServicePort.getPlate(plateUpdatingStateRequest.getId());
+
+        plate.setActive(!plate.isActive());
+        iPlateServicePort.updatePlate(plate);
+    }
+
+
+
 }

@@ -36,6 +36,7 @@ public class Security {
                 .antMatchers("/user/employee/{idRole}").hasAuthority("ROLE_PROPIETARIO")
                 .antMatchers("/square/createPlate/").hasAuthority("ROLE_PROPIETARIO")
                 .antMatchers("/square/putPlate/").hasAuthority("ROLE_PROPIETARIO")
+                .antMatchers("/square/putActivate/").hasAuthority("ROLE_PROPIETARIO")
 
 
 

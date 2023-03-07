@@ -4,6 +4,7 @@ package com.powerup.square.infraestructure.input.rest;
 import com.powerup.square.application.dto.PlateRequest;
 import com.powerup.square.application.dto.PlateResponse;
 import com.powerup.square.application.dto.PlateUpdatingRequest;
+import com.powerup.square.application.dto.PlateUpdatingStateRequest;
 import com.powerup.square.application.handler.IPlateHandler;
 import com.powerup.square.infraestructure.out.jpa.entity.PlateEntity;
 import io.swagger.v3.oas.annotations.Operation;
@@ -65,4 +66,10 @@ public class PlateRestController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+
+    @PutMapping("/putActivate/")
+    public ResponseEntity<Void> editPlate(@RequestBody PlateUpdatingStateRequest plateUpdatingStateRequest){
+        plateHandler.activatePlate(plateUpdatingStateRequest);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }
