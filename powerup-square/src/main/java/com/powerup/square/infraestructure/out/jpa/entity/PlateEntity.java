@@ -33,5 +33,6 @@ public class PlateEntity {
     @Column(name = "urlImage", nullable = false)
     private String urlImage;
 
-
+    @Column(name = "active", nullable = false)
+    private boolean active;
 }
