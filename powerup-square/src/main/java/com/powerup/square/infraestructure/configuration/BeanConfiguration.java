@@ -1,14 +1,19 @@
 package com.powerup.square.infraestructure.configuration;
 
+import com.powerup.square.domain.api.IEmployeeServicePort;
 import com.powerup.square.domain.api.IPlateServicePort;
 import com.powerup.square.domain.api.IRestaurantServicePort;
+import com.powerup.square.domain.spi.IEmployeePersistencePort;
 import com.powerup.square.domain.spi.IPlatePersistencePort;
 import com.powerup.square.domain.spi.IRestaurantPersistencePort;
+import com.powerup.square.domain.usecase.EmployeeUseCase;
 import com.powerup.square.domain.usecase.PlateUseCase;
 import com.powerup.square.domain.usecase.RestaurantUseCase;
+import com.powerup.square.infraestructure.out.jpa.adapter.EmployeeJpaAdapter;
 import com.powerup.square.infraestructure.out.jpa.adapter.PlateJpaAdapter;
 import com.powerup.square.infraestructure.out.jpa.adapter.RestaurantJpaAdapter;
 import com.powerup.square.infraestructure.out.jpa.mapper.ICategoryMapper;
+import com.powerup.square.infraestructure.out.jpa.mapper.IEmployeeMapper;
 import com.powerup.square.infraestructure.out.jpa.mapper.IPlateMapper;
 import com.powerup.square.infraestructure.out.jpa.mapper.IRestaurantMapper;
 import com.powerup.square.infraestructure.out.jpa.repository.ICategoryRepository;
@@ -28,9 +33,9 @@ public class BeanConfiguration {
     private final IPlateRepository plateRepository;
     private final IPlateMapper plateMapper;
 
-  
-
     private final IEmployeeRepository employeeRepository;
+    private final IEmployeeMapper employeeMapper;
+
     private final ICategoryMapper categoryMapper;
     private final ICategoryRepository categoryRepository;
 
@@ -57,5 +62,13 @@ public class BeanConfiguration {
 
 ///////
 
+    @Bean
+    public IEmployeePersistencePort employeePersistencePort(){
+        return new EmployeeJpaAdapter(employeeRepository, employeeMapper, restaurantRepository);
+    }
 
+    @Bean
+    public IEmployeeServicePort employeeServicePort(){
+        return new EmployeeUseCase(employeePersistencePort());
+    }
 }

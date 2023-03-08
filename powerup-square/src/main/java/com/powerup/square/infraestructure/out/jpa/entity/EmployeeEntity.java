@@ -19,7 +19,7 @@ public class EmployeeEntity {
     @Column(name = "idUser", nullable = false)
     private Long idUser;
     @ManyToOne
-    @JoinColumn(name = "id_restaurant", nullable = false)
+    @JoinColumn(name = "id_restaurant")
     private RestaurantEntity restaurant;
     @Column(name = "field", nullable = false)
     private String field;

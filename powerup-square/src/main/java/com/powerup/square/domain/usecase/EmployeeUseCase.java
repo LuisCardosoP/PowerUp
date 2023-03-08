@@ -1,12 +1,13 @@
 package com.powerup.square.domain.usecase;
 
+import com.powerup.square.domain.api.IEmployeeServicePort;
 import com.powerup.square.domain.model.Employee;
 import com.powerup.square.domain.spi.IEmployeePersistencePort;
-import com.powerup.square.domain.spi.IRestaurantPersistencePort;
+
 
 import java.util.List;
 
-public class EmployeeUseCase implements IEmployeePersistencePort {
+public class EmployeeUseCase implements IEmployeeServicePort {
 
     private final IEmployeePersistencePort employeePersistencePort;
 

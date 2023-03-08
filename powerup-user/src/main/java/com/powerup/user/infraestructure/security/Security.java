@@ -33,11 +33,11 @@ public class Security {
                  .antMatchers("/api/v1/auth/**", "/swagger-ui/**", "/swagger-resources/**", "/api/v1/user/client/**", "/v3/api-docs/**", "/v2/api-docs/**").permitAll()
                 .antMatchers("/user/proprietary").hasAuthority("ROLE_ADMINISTRADOR")
                 .antMatchers("/square/restaurant").hasAuthority("ROLE_ADMINISTRADOR")
-                .antMatchers("/user/employee/{idRole}").hasAuthority("ROLE_PROPIETARIO")
+            //   .antMatchers("/user/employee/{idRole}").hasAuthority("ROLE_PROPIETARIO")
                 .antMatchers("/square/createPlate/").hasAuthority("ROLE_PROPIETARIO")
                 .antMatchers("/square/putPlate/").hasAuthority("ROLE_PROPIETARIO")
                 .antMatchers("/square/putActivate/").hasAuthority("ROLE_PROPIETARIO")
-
+                .antMatchers("/square/createEmployee").hasAuthority("ROLE_PROPIETARIO")
 
 
                 //.antMatchers("/api/v1/auth/*", "/swagger-ui/", "/swagger-resources/", "/api/v1/user/client/", "/v3/api-docs/", "/v2/api-docs/*").permitAll()

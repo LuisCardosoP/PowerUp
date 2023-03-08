@@ -1,9 +1,6 @@
 package com.powerup.user.infraestructure.input.rest;
 
-import com.powerup.user.application.dto.PlateRequest;
-import com.powerup.user.application.dto.PlateUpdatingRequest;
-import com.powerup.user.application.dto.PlateUpdatingStateRequest;
-import com.powerup.user.application.dto.RestaurantRequest;
+import com.powerup.user.application.dto.*;
 import com.powerup.user.infraestructure.RestaurateClientFeign.RestauranteClient.RestaurantClient;
 import com.powerup.user.infraestructure.out.jpa.repository.IUserRepository;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,6 +22,7 @@ public class SquareRestController {
     private final RestaurantClient restaurantClient;
 
     private final IUserRepository userRepository;
+
 
 
     @Operation(summary = "Add restaurante")
@@ -50,6 +48,19 @@ public class SquareRestController {
     public ResponseEntity<PlateRequest> savePlateEntity( @RequestBody PlateRequest plateRequest){
 
         restaurantClient.savePlate(plateRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @Operation(summary = "Add employee")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "plate created", content = @Content),
+            @ApiResponse(responseCode = "409", description = "plate already exists", content = @Content)
+    })
+
+    @PostMapping("/createEmployee")
+    public ResponseEntity<Void> saveEmployeeEntity(@Validated @RequestBody EmployeeRequest employeeRequest){
+
+        restaurantClient.saveEmployee(employeeRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
