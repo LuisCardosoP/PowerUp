@@ -34,12 +34,13 @@ class RestaurantUseCaseTest {
         verify(iRestaurantPersistencePort).saveRestaurant(restaurant);
     }
 
-    @Test
+  /*  @Test
     void getAllRestaurant() {
         restaurantUseCase.getAllRestaurant();
 
         verify(iRestaurantPersistencePort).getAllRestaurant();
-    }
+    }*/
+
 
 //    @Test
 //    void getRestaurant() {

@@ -54,7 +54,7 @@ class RestaurantJpaAdapterTest {
 //        verify(restaurantMapper).toRestaurant(restaurantRepository.findById(anyLong()).get());
 //    }
 
-  /*  @Test
+   /*@Test
     void getRestaurantByIdOwner() {
         restaurantJpaAdapter.getRestaurantByIdOwner(anyLong());
 

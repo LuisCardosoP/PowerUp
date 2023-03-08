@@ -38,28 +38,5 @@ class RoleJpaAdapterTest {
         verify(roleMapper).toRoles(roleRepository.findAll());
     }
 
-//    @Test
-//    void getRoleById() {
-//        Long id = 5L;
-//        //When
-//        roleJpaAdapter.getRoleById(id);
-//
-//        //Then
-//        verify(roleMapper).toRole(roleRepository.findById(anyLong()).get());
-//
-//    }
 
-//    @Test
-//    void getRoleByName() {
-//        //Given
-//        String name = "juliana";
-//
-//        //When
-//        roleJpaAdapter.getRoleByName(name);
-//
-//        RoleEntity roleEntity
-//
-//        //Then
-//        verify(roleMapper).toRole(roleRepository.findByName(name));
-//    }
 }

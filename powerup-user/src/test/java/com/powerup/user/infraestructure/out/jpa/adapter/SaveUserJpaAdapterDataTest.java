@@ -33,7 +33,7 @@ public class SaveUserJpaAdapterDataTest {
 
         userEntity.setId(11L);
         userEntity.setName("Jeisson");
-        userEntity.setLastName("Garcia");
+        userEntity.setLastName("Ramirez");
         userEntity.setPhone("3013218602");
         userEntity.setEmail("jeisson@gmail.com");
         userEntity.setPassword("12345");

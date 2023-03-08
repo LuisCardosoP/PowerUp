@@ -28,6 +28,10 @@ ext {
 }
 
 dependencies {
+    testImplementation 'junit:junit:4.13.1'
+	testImplementation 'junit:junit:4.13.1'
+	testImplementation 'junit:junit:4.13.1'
+
 //	annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
 //	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 //	annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
@@ -85,6 +89,7 @@ dependencies {
 	implementation "org.springdoc:springdoc-openapi-webflux-ui:${openApiVersion}"
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:3.1.4'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5', 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 	implementation "org.springdoc:springdoc-openapi-ui:${openApiVersion}"
@@ -95,6 +100,7 @@ dependencies {
 
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
+	testImplementation 'org.springframework.security:spring-security-test'
 
 
 
