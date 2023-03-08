@@ -51,18 +51,7 @@ public class SquareRestController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @Operation(summary = "Add employee")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "plate created", content = @Content),
-            @ApiResponse(responseCode = "409", description = "plate already exists", content = @Content)
-    })
 
-    @PostMapping("/createEmployee")
-    public ResponseEntity<Void> saveEmployeeEntity(@Validated @RequestBody EmployeeRequest employeeRequest){
-
-        restaurantClient.saveEmployee(employeeRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
 
 
     @Operation(summary = "put plate")
@@ -83,7 +72,18 @@ public class SquareRestController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    @Operation(summary = "Add employee")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "plate created", content = @Content),
+            @ApiResponse(responseCode = "409", description = "plate already exists", content = @Content)
+    })
 
+    @PostMapping("/createEmployee")
+    public ResponseEntity<Void> saveEmployeeEntity(@Validated @RequestBody EmployeeRequest employeeRequest){
+
+        restaurantClient.saveEmployee(employeeRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 
     public static String userLoginApplication() { // leer token
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

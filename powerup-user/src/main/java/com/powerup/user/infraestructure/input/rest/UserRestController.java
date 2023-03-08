@@ -1,5 +1,6 @@
 package com.powerup.user.infraestructure.input.rest;
 
+import com.powerup.user.application.dto.EmployeeRequest;
 import com.powerup.user.application.dto.UserRequest;
 import com.powerup.user.application.dto.UserResponse;
 import com.powerup.user.application.handler.IUserHandler;
@@ -34,7 +35,7 @@ public class UserRestController {
 //        }
 //        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-
+/*
     @Operation(summary = "Add Employee")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User created", content = @Content),
@@ -48,7 +49,9 @@ public class UserRestController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-    }
+    }*/
+
+
 
     @Operation(summary = "Add Client")
     @ApiResponses(value = {
