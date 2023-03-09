@@ -42,10 +42,10 @@ public class SaveHandlerDataTest {
     public static UserResponse obtainUserResponse(){
         UserResponse userResponse = new UserResponse();
 
-        userResponse.setName("David");
-        userResponse.setLastName("Tolosa");
-        userResponse.setPhone("3013542310");
-        userResponse.setEmail("alejandro@gmail.com");
+        userResponse.setName("Robert");
+        userResponse.setLastName("Rodriguez");
+        userResponse.setPhone("3015442310");
+        userResponse.setEmail("robert@gmail.com");
         userResponse.setRole(new Role(2L, "ROLE_PROPRIETARY", "Proprietary"));
 
         return userResponse;

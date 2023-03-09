@@ -87,4 +87,18 @@ class PlateHandlerTest {
         verify(iPlateServicePort).updatePlate(plate);
 
     }
+
+    @Test
+    void activatePlate() {
+
+        Plate plate = SavePlateHandlerDataTest.obtainPlate();
+        PlateUpdatingRequest plateUpdatingRequest = SavePlateHandlerDataTest.obtainPlateUpdatingRequest();
+
+        when(iPlateServicePort.getPlate(anyLong())).thenReturn(plate);
+        plateHandler.updatePlate(plateUpdatingRequest);
+
+        verify(iPlateServicePort).updatePlate(plate);
+
+    }
+
 }

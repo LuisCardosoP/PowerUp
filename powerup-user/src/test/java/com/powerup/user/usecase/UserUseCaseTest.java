@@ -32,7 +32,7 @@ class UserUseCaseTest {
 //        when(userRepository.findByEmail(any())).thenReturn(Optional.empty());
         //Given
         User user = SaveUserUseCaseDataTest.obtainUser();
-        Long idRol = 2L;
+        Long idRol = 4L;
 
         //When
         user.setRole(rolePersistencePort.getRoleById(anyLong()));

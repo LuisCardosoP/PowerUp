@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @FeignClient(name="plazoleta",url = "http://localhost:8282/" ) //configuration = CustomFeignConfig.class)
 public interface RestaurantClient {
     //@PostMapping("/restaurante")
@@ -24,5 +26,8 @@ public interface RestaurantClient {
 
     @RequestMapping(method = RequestMethod.POST, value = "employee/createEmployee")
     public ResponseEntity<EmployeeRequest> saveEmployee(@RequestBody EmployeeRequest employeeRequest);
+
+    @RequestMapping(method = RequestMethod.POST, value = "restaurants/allRestaurant")
+    public ResponseEntity<List<RestaurantResponse>> getAllRestaurant(@RequestBody RestaurantListRequest restaurantListRequest);
 
 }

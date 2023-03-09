@@ -45,7 +45,7 @@ class UserHandlerTest {
         // Given
         User user = SaveHandlerDataTest.obtainUser();
         UserRequest userRequest = SaveHandlerDataTest.obtainUserRequest();
-        Long idRol = 2L;
+        Long idRol = 4L; // cambio el rol si cuando se requiera
 
         // When
         when(iUserRequestMapper.toUser(any())).thenReturn(user);
@@ -56,6 +56,8 @@ class UserHandlerTest {
         // Then
         verify(iUserServicePort).saveUser(user,idRol);
     }
+
+
 
     @Test
     void getUser() {

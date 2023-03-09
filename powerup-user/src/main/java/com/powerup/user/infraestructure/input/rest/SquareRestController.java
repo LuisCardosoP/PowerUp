@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/square")
 @RequiredArgsConstructor
@@ -51,9 +53,6 @@ public class SquareRestController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-
-
-
     @Operation(summary = "put plate")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "put created", content = @Content),
@@ -84,6 +83,17 @@ public class SquareRestController {
         restaurantClient.saveEmployee(employeeRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+    @Operation(summary = "Get restaurants")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Restaurant gotten", content = @Content),
+            @ApiResponse(responseCode = "400", description = "Restaurant do not exists", content = @Content)
+    })
+    @PostMapping("/allRestaurant")
+    public ResponseEntity<List<RestaurantResponse>> getAllRestaurant(@RequestBody RestaurantListRequest restaurantListRequest){
+        return restaurantClient.getAllRestaurant(restaurantListRequest);
+    }
+
+
 
     public static String userLoginApplication() { // leer token
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

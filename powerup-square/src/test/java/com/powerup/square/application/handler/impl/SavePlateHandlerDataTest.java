@@ -11,24 +11,24 @@ public class SavePlateHandlerDataTest {
     public static Plate obtainPlate(){
         Plate plate = new Plate(
                 2L,
-                "Mexican Hamburguer",
+                " Hamburguer",
                 new Category(
                         1L,
                         "Hamburger",
-                        "Has 2 breads, tomato, lettuce, bacon and mozzarella cheese"
+                        "Has 2 breads"
                 ),
                 "Have nachos, sour cream, guacamole and pico de gallo",
                 15L,
                 new Restaurant(
                         100L,
-                        "Angus Hamburguers",
-                        "Street 25",
-                        10L,
-                        "3013218520",
+                        "Luis ",
+                        "Street 55",
+                        2L,
+                        "3013256565",
                         "www.logo.es",
-                        "ASD-121854-YU"
+                        "ASD-121832-YU"
                 ),
-                "www.hamburger.com/asdas.png",
+                "www.burguer.com/asdas.png",
                 true
         );
 
@@ -38,12 +38,12 @@ public class SavePlateHandlerDataTest {
     public static PlateRequest obtainPlateRequest(){
         PlateRequest plateRequest = new PlateRequest();
 
-        plateRequest.setName("Mexican Hamburguer");
+        plateRequest.setName(" Hamburguer");
         plateRequest.setIdCategory(1L);
         plateRequest.setDescription("Have nachos, sour cream, guacamole and pico de gallo");
         plateRequest.setPrice(15L);
-        plateRequest.setIdRestaurant(100L);
-        plateRequest.setUrlImage("www.hamburger.com/asdas.png");
+        plateRequest.setIdRestaurant(10L);
+        plateRequest.setUrlImage("www.burger.com/asdas.png");
 
         return plateRequest;
     }
@@ -52,7 +52,7 @@ public class SavePlateHandlerDataTest {
         PlateUpdatingRequest plateUpdatingRequest = new PlateUpdatingRequest();
 
         plateUpdatingRequest.setId(100L);
-        plateUpdatingRequest.setDescription("Pizza with loots of cheese");
+        plateUpdatingRequest.setDescription("Pizza ");
         plateUpdatingRequest.setPrice(15L);
         plateUpdatingRequest.setIdOwner(2L);
 

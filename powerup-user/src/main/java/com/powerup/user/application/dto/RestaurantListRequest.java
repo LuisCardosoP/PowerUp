@@ -1,4 +1,4 @@
-package com.powerup.square.application.dto;
+package com.powerup.user.application.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +14,6 @@ public class RestaurantListRequest {
     private Long amount;
 
     private Long page;
-    @NotBlank(message = "el campo es sort es obligatorio")
+    @NotBlank
     private String sort;
 }
