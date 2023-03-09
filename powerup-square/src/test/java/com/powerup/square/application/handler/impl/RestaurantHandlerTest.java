@@ -1,5 +1,6 @@
 package com.powerup.square.application.handler.impl;
 
+import com.powerup.square.application.dto.RestaurantListRequest;
 import com.powerup.square.application.dto.RestaurantRequest;
 import com.powerup.square.application.mapper.IRestaurantRequestMapper;
 import com.powerup.square.application.mapper.IRestaurantResponseMapper;
@@ -45,7 +46,16 @@ class RestaurantHandlerTest {
         verify(iRestaurantServicePort).saveRestaurant(restaurant);
 
     }
+    @Test
+    void getAllRestaurant(){
 
+        RestaurantListRequest restaurantListRequest = SaveRestaurantHandlerDataTest.obtainRestaurantListRequest();
+
+        restaurantHandler.getAllRestaurant(restaurantListRequest);
+
+        verify(iRestaurantResponseMapper).toRestaurantResponse(iRestaurantServicePort.getAllRestaurant(restaurantListRequest));
+
+    }
     @Test
     void getRestaurant() {
 
@@ -57,4 +67,8 @@ class RestaurantHandlerTest {
         verify(iRestaurantResponseMapper).toRestaurantResponse(restaurant);
 
     }
+
+
+
+
 }
