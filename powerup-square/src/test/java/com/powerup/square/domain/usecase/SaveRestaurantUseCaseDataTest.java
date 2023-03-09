@@ -7,12 +7,12 @@ public class SaveRestaurantUseCaseDataTest {
     public static Restaurant obtainRestaurant() {
         Restaurant restaurant = new Restaurant(
                 2L,
-                "Angus Hamburguer",
-                "Street 50",
-                22L,
-                "3013544379",
-                "https://www.elcolombiano.com/asds.png",
-                "1324564887"
+                " Hamburguer",
+                "calle 53",
+                23L,
+                "301354423423479",
+                "https://www.lagranja.com",
+                "132456424"
         );
 
         return restaurant;
