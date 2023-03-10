@@ -1,9 +1,6 @@
 package com.powerup.square.application.handler.impl;
 
-import com.powerup.square.application.dto.PlateRequest;
-import com.powerup.square.application.dto.PlateResponse;
-import com.powerup.square.application.dto.PlateUpdatingRequest;
-import com.powerup.square.application.dto.PlateUpdatingStateRequest;
+import com.powerup.square.application.dto.*;
 import com.powerup.square.application.handler.IPlateHandler;
 import com.powerup.square.application.mapper.IPlateRequestMapper;
 import com.powerup.square.application.mapper.IPlateResponseMapper;
@@ -15,6 +12,7 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -68,6 +66,12 @@ public class PlateHandler implements IPlateHandler {
         plate.setActive(!plate.isActive());
         iPlateServicePort.updatePlate(plate);
     }
+
+    @Override
+    public List<PlateResponse> getPlatesRestaurant(PlateListRequest plateListRequest) {
+        return iPlateResponseMapper.toPlateResponseList(iPlateServicePort.getPlatesRestaurant(plateListRequest));
+    }
+
 
 
 

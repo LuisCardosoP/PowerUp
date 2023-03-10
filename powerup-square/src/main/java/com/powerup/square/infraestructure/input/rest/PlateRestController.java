@@ -1,10 +1,7 @@
 package com.powerup.square.infraestructure.input.rest;
 
 
-import com.powerup.square.application.dto.PlateRequest;
-import com.powerup.square.application.dto.PlateResponse;
-import com.powerup.square.application.dto.PlateUpdatingRequest;
-import com.powerup.square.application.dto.PlateUpdatingStateRequest;
+import com.powerup.square.application.dto.*;
 import com.powerup.square.application.handler.IPlateHandler;
 import com.powerup.square.infraestructure.out.jpa.entity.PlateEntity;
 import io.swagger.v3.oas.annotations.Operation;
@@ -72,4 +69,21 @@ public class PlateRestController {
         plateHandler.activatePlate(plateUpdatingStateRequest);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+
+    @Operation(summary = "Get plates by restaurant")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Plate gotten", content = @Content),
+            @ApiResponse(responseCode = "409", description = "Plate doesn't exists", content = @Content)
+    })
+
+
+    @PostMapping("/allPlates")
+    public ResponseEntity<List<PlateResponse>> getPlatesRestaurant(@RequestBody PlateListRequest plateListRequest){
+        return ResponseEntity.status(HttpStatus.OK).body(plateHandler.getPlatesRestaurant(plateListRequest));
+
+    }
+
+
+
 }

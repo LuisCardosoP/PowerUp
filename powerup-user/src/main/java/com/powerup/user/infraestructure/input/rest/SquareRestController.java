@@ -93,6 +93,10 @@ public class SquareRestController {
         return restaurantClient.getAllRestaurant(restaurantListRequest);
     }
 
+    @PostMapping("/allPlates")
+    public ResponseEntity<List<PlateResponse>> getPlatesRestaurant(@RequestBody PlateListRequest plateListRequest){
+        return restaurantClient.getPlatesRestaurant(plateListRequest);
+    }
 
 
     public static String userLoginApplication() { // leer token

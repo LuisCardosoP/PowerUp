@@ -1,5 +1,6 @@
 package com.powerup.square.domain.spi;
 
+import com.powerup.square.application.dto.PlateListRequest;
 import com.powerup.square.domain.model.Plate;
 import com.powerup.square.domain.model.Restaurant;
 
@@ -13,4 +14,5 @@ public interface IPlatePersistencePort {
     void updatePlate(Plate plate);
     void deletePlate(Long id);
 
+    List<Plate> getPlatesRestaurant(PlateListRequest plateListRequest);
 }

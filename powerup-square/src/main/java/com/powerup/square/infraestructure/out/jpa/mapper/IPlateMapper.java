@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
 import java.util.Optional;
 
 @Mapper(componentModel = "spring",
@@ -19,7 +20,9 @@ public interface IPlateMapper {
             @Mapping(target="description", source="description"),
             @Mapping(target="price", source="price"),
             @Mapping(target="urlImage", source="urlImage")
+
     })
+    List<Plate> toPlate(List<PlateEntity> plateEntity);
     PlateEntity toEntity(Plate plate);
     Plate toPlate(PlateEntity plateEntity);
 }

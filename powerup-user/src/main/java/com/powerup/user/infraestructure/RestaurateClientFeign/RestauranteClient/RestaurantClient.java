@@ -30,4 +30,8 @@ public interface RestaurantClient {
     @RequestMapping(method = RequestMethod.POST, value = "restaurants/allRestaurant")
     public ResponseEntity<List<RestaurantResponse>> getAllRestaurant(@RequestBody RestaurantListRequest restaurantListRequest);
 
+    @RequestMapping(method = RequestMethod.POST, value =  "plates/allPlates")
+    public ResponseEntity<List<PlateResponse>> getPlatesRestaurant(@RequestBody PlateListRequest plateListRequest);
+
+
 }
