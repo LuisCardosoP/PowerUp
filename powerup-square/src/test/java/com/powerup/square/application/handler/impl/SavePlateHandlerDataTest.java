@@ -1,5 +1,6 @@
 package com.powerup.square.application.handler.impl;
 
+import com.powerup.square.application.dto.PlateListRequest;
 import com.powerup.square.application.dto.PlateRequest;
 import com.powerup.square.application.dto.PlateUpdatingRequest;
 import com.powerup.square.domain.model.Category;
@@ -47,7 +48,15 @@ public class SavePlateHandlerDataTest {
 
         return plateRequest;
     }
+    public static PlateListRequest obtainPlateListRequest(){
+        PlateListRequest plateListRequest = new PlateListRequest();
 
+        plateListRequest.setIdRestaurant(2L);
+        plateListRequest.setPage(1L);
+        plateListRequest.setAmount(1L);
+
+        return plateListRequest;
+    }
     public static PlateUpdatingRequest obtainPlateUpdatingRequest(){
         PlateUpdatingRequest plateUpdatingRequest = new PlateUpdatingRequest();
 

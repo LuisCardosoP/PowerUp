@@ -1,5 +1,6 @@
 package com.powerup.square.application.handler.impl;
 
+import com.powerup.square.application.dto.PlateListRequest;
 import com.powerup.square.application.dto.PlateRequest;
 import com.powerup.square.application.dto.PlateUpdatingRequest;
 import com.powerup.square.application.mapper.IPlateRequestMapper;
@@ -99,6 +100,15 @@ class PlateHandlerTest {
 
         verify(iPlateServicePort).updatePlate(plate);
 
+    }
+
+    @Test
+    void getPlatesRestaurant(){
+        PlateListRequest plateListRequest = SavePlateHandlerDataTest.obtainPlateListRequest();
+
+        plateHandler.getPlatesRestaurant(plateListRequest);
+
+        verify(iPlateResponseMapper).toPlateResponseList(iPlateServicePort.getPlatesRestaurant(plateListRequest));
     }
 
 }
