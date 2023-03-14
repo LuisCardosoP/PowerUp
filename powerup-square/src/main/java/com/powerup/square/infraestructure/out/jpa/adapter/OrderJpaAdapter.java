@@ -25,18 +25,5 @@ public class OrderJpaAdapter implements IOrderPersistencePort {
         return null;
     }
 
-    @Override
-    public Order getOrder(Long id) {
-        return null;
-    }
 
-    @Override
-    public void cancelOrder(Long id) {
-
-    }
-
-    @Override
-    public void updateOrder(Order order) {
-
-    }
 }

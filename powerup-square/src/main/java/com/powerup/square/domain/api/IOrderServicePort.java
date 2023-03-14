@@ -8,7 +8,5 @@ public interface IOrderServicePort {
 
     void saveOrder(Order order);
     List<Order> getAllOrder();
-    Order getOrder(Long id);
-    void cancelOrder(Long id);
-    void updateOrder(Order order);
+
 }
