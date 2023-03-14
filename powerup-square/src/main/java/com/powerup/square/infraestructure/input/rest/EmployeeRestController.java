@@ -30,7 +30,7 @@ public class EmployeeRestController {
     })
     @PostMapping("/createEmployee")
     public ResponseEntity<Void> saveEmployeeEntity(@Validated @RequestBody EmployeeRequest employeeRequest){
-//        restaurantHandler.saveRestaurant(restaurantRequest);
+
         employeeHandler.saveEmployee(employeeRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

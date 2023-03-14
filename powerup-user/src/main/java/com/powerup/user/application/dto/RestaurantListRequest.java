@@ -11,7 +11,10 @@ import javax.validation.constraints.NotBlank;
 public class RestaurantListRequest {
 
 
-    private Long page;
     private Long amount;
-    private Long idRestaurant;
+    private Long page;
+
+    private String sort;
+
+
 }

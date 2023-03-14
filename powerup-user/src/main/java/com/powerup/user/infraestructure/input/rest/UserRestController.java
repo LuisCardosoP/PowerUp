@@ -35,7 +35,7 @@ public class UserRestController {
 //        }
 //        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-/*
+
     @Operation(summary = "Add Employee")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User created", content = @Content),
@@ -49,7 +49,7 @@ public class UserRestController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-    }*/
+    }
 
 
 
@@ -64,6 +64,7 @@ public class UserRestController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    /*
     @Operation(summary = "Obtain user by id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User created", content = @Content),
@@ -75,7 +76,7 @@ public class UserRestController {
         UserResponse userResponse = userHandler.getUser(id);
         return userResponse;
     }
-
+*/
 
 
 }

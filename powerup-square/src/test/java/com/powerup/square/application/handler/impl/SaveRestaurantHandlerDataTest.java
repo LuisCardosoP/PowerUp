@@ -10,7 +10,7 @@ public class SaveRestaurantHandlerDataTest {
 
         Restaurant restaurant = new Restaurant(
                 100L,
-                " Hamburguers",
+                " La asaderia",
                 "Street 55",
                 10L,
                 "3013218534243240",

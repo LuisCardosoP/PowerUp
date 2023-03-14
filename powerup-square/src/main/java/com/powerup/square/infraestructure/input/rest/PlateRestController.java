@@ -43,16 +43,8 @@ public class PlateRestController {
         return plateHandler.getPlate(id);
     }
 
-    @Operation(summary = "Get plates")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Plate gotten", content = @Content),
-            @ApiResponse(responseCode = "409", description = "Plate doesn't exists", content = @Content)
-    })
-    @GetMapping("/getPlates/")
-    public ResponseEntity<List<PlateEntity>> getAllPlates(){
 
-        return null;
-    }
+
     @Operation(summary = "change plate")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Plate edited successfully", content = @Content)
