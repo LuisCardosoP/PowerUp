@@ -7,16 +7,15 @@ public class Order {
     private Long idClient;
     private Date date;
     private String state;
-    private Long idChef;
-    private Long idRestaurant;
+    // private Long idChef;
+    private Restaurant restaurant;
 
-    public Order(Long id, Long idClient, Date date, String state, Long idChef, Long idRestaurant) {
+    public Order(Long id, Long idClient, Date date, String state, Restaurant restaurant) {
         this.id = id;
         this.idClient = idClient;
         this.date = date;
         this.state = state;
-        this.idChef = idChef;
-        this.idRestaurant = idRestaurant;
+        this.restaurant = restaurant;
     }
 
     public Long getId() {
@@ -51,19 +50,11 @@ public class Order {
         this.state = state;
     }
 
-    public Long getIdChef() {
-        return idChef;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setIdChef(Long idChef) {
-        this.idChef = idChef;
-    }
-
-    public Long getIdRestaurant() {
-        return idRestaurant;
-    }
-
-    public void setIdRestaurant(Long idRestaurant) {
-        this.idRestaurant = idRestaurant;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

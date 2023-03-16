@@ -99,6 +99,9 @@ public class SquareRestController {
     }
 
 
+    //
+
+
     public static String userLoginApplication() { // leer token
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = null;

@@ -14,13 +14,15 @@ public class OrderPlatesUseCase implements IOrderPlatesServicePort {
         this.orderPlatesPersistencePort = orderPlatesPersistencePort;
     }
 
-    @Override
-    public void saveOrderPlates(OrderPlates orderPlates) {
 
+    @Override
+    public void saveOrderPlates(List<OrderPlates> orderPlates) {
+        orderPlatesPersistencePort.saveOrderPlates(orderPlates);
     }
 
     @Override
     public List<OrderPlates> getAllOrderPlatesByOrderId(Long id) {
-        return null;
+        return orderPlatesPersistencePort.getAllOrderPlatesByOrderId(id);
+
     }
 }

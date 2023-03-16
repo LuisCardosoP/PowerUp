@@ -24,9 +24,14 @@ public class OrderEntity {
     private Date date;
     @Column(name = "state")
     private String state;
-    @ManyToOne
+
+
+    /*@ManyToOne
     @JoinColumn(name = "id_chef")
     private EmployeeEntity chef;
+
+
+     */
     @ManyToOne
     @JoinColumn(name = "id_restaurant", nullable = false)
     private RestaurantEntity restaurant;

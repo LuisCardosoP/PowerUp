@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class OrderRestController {
 
-    private final OrderHandler orderHandler;
+     private final OrderHandler orderHandler;
 
     @Operation(summary = "Add order")
     @ApiResponses(value = {

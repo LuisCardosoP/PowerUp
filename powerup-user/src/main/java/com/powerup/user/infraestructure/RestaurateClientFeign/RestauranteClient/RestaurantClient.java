@@ -34,4 +34,8 @@ public interface RestaurantClient {
     public ResponseEntity<List<PlateResponse>> getPlatesRestaurant(@RequestBody PlateListRequest plateListRequest);
 
 
+    // new order
+
+
+
 }
