@@ -1,9 +1,18 @@
 package com.powerup.square.infraestructure.out.jpa.repository;
 
 import com.powerup.square.infraestructure.out.jpa.entity.OrderEntity;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IOrderRepository extends JpaRepository<OrderEntity, Long> {
+
+    OrderEntity getOrderByIdClient(Long idClient);
+
+    boolean existsByIdClient(Long idClient);
+
+    List<OrderEntity> getOrdersByState(String state, Pageable pageable);
 }

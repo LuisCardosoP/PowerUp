@@ -1,5 +1,6 @@
 package com.powerup.square.domain.usecase;
 
+import com.powerup.square.application.dto.OrderState;
 import com.powerup.square.domain.api.IOrderServicePort;
 import com.powerup.square.domain.model.Order;
 import com.powerup.square.domain.spi.IOrderPersistencePort;
@@ -22,18 +23,21 @@ public class OrderUseCase implements IOrderServicePort {
 
 
 
-   /* @Override
-    public List<Order> getAllOrdersByState(OrderStateRequest orderStateRequest) {
-        return orderPersistencePort.getAllOrdersByState(orderStateRequest);
-    */
+    @Override
+    public List<Order> getAllOrdersByState(int page, int size, OrderState orderState) {
+        return orderPersistencePort.getAllOrdersByState(page, size,orderState);
+
+
+}
 
     @Override
     public Order getOrderByIdClient(Long idClient) {
-        return null;
+        return orderPersistencePort.getOrderByIdClient(idClient);
     }
 
     @Override
     public boolean existsByIdClient(Long idClient) {
-        return false;
+        return orderPersistencePort.existsByIdClient(idClient);
+
     }
 }

@@ -47,12 +47,12 @@ class RestaurantJpaAdapterTest {
     void getAllRestaurant() {
     }
 
-//    @Test
-//    void getRestaurant() {
-//        restaurantJpaAdapter.getRestaurant(anyLong());
-//
-//        verify(restaurantMapper).toRestaurant(restaurantRepository.findById(anyLong()).get());
-//    }
+    /*@Test
+    void getRestaurant() {
+        restaurantJpaAdapter.getRestaurant(anyLong());
+
+        verify(restaurantMapper).toRestaurant(restaurantRepository.findById(anyLong()).get());
+    }*/
 
    /*@Test
     void getRestaurantByIdOwner() {

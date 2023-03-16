@@ -2,6 +2,7 @@ package com.powerup.square.application.handler.impl;
 
 import com.powerup.square.application.dto.OrderRequest;
 import com.powerup.square.application.dto.OrderResponse;
+import com.powerup.square.application.dto.OrderState;
 import com.powerup.square.application.handler.IOrderHandler;
 import com.powerup.square.application.mapper.IOrderRequestMapper;
 import com.powerup.square.application.mapper.IOrderResponseMapper;
@@ -10,7 +11,8 @@ import com.powerup.square.domain.api.IOrderServicePort;
 import com.powerup.square.domain.api.IPlateServicePort;
 import com.powerup.square.domain.api.IRestaurantServicePort;
 import com.powerup.square.domain.exception.PendingExistsException;
-// import com.powerup.square.domain.exception.PlateIsNotRestaurantException;
+
+import com.powerup.square.domain.exception.PlateIsNotRestaurantException;
 import com.powerup.square.domain.model.Order;
 import com.powerup.square.domain.model.OrderPlates;
 import com.powerup.square.domain.spi.IPlatePersistencePort;
@@ -50,36 +52,41 @@ public class OrderHandler implements IOrderHandler {
 
 
     @Override
+    public List<OrderResponse> getAllOrdersByState(int page, int size, OrderState orderState) {
+        return iOrderResponseMapper.toOrderResponseList(iOrderServicePort.getAllOrdersByState(page, size, orderState));
+    }
+
+    @Override
     public void saveOrder(OrderRequest orderRequest) {
         Order order = iOrderRequestMapper.toOrder(orderRequest);
 
            // save order cliente
-    /*    if(iOrderServicePort.existsByIdClient(order.getIdClient())) {
+        if(iOrderServicePort.existsByIdClient(order.getIdClient())) {
 
 
             if(iOrderServicePort.getOrderByIdClient(order.getIdClient()).getState() != "save") {
                 throw new PendingExistsException();
             }
-        }*/
+        }
 
 
         // Validar si el id del plato corresponde al restaurante
 
 
 
-      /*  for(int x = 0; x<=orderRequest.getIdPlates().size()-1;x++) {
+       for(int x = 0; x<=orderRequest.getIdPlates().size()-1;x++) {
             if(iPlateServicePort.getPlate(orderRequest.getIdPlates().get(x)).getRestaurant().getId() !=
                     orderRequest.getIdRestaurant()) {
                 throw new PlateIsNotRestaurantException();
             }
-        }*/
+        }
 
 
         Date date = new java.util.Date();
 
         order.setId(-1L);
         order.setDate(date);
-        order.setState("Pending");
+        order.setState("Pendiente");
         order.setRestaurant(iRestaurantServicePort.getRestaurant(orderRequest.getIdRestaurant()));
 
         // Saving data in orders table
