@@ -24,6 +24,8 @@ public class SaveOrderHandlerDataTest {
         orderRequest.setIdRestaurant(1L);
         List<Long> amountlist = new ArrayList<>();
         amountlist.add(1L);
+
+
         List<Long> plateslist = new ArrayList<>();
         plateslist.add(1L);
         orderRequest.setAmountPlates(amountlist);

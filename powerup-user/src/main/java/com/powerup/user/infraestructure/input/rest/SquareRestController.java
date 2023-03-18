@@ -41,6 +41,8 @@ public class SquareRestController {
                 .body(restaurantRequest);
     }
 
+
+
     @Operation(summary = "Add plate")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "plate created", content = @Content),
@@ -100,6 +102,7 @@ public class SquareRestController {
 
 
     //
+
 
 
     public static String userLoginApplication() { // leer token

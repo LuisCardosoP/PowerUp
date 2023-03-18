@@ -39,13 +39,11 @@ public class Security {
                 .antMatchers("/square/putActivate/").hasAuthority("ROLE_PROPIETARIO")
                 .antMatchers("/square/createEmployee").hasAuthority("ROLE_PROPIETARIO")
                 .antMatchers("/user/employee/3").hasAuthority("ROLE_PROPIETARIO")
-                .antMatchers("/square/allRestaurants**").permitAll()
-                .antMatchers("/square/allPlates**").permitAll()
+                .antMatchers("/square/allRestaurant").hasAuthority("ROLE_CLIENTE")
+                .antMatchers("/square/allPlates").hasAuthority("ROLE_CLIENTE")
+             //   .antMatchers("/square/allPlates**").permitAll()
 
-                //.antMatchers("/api/v1/auth/*", "/swagger-ui/", "/swagger-resources/", "/api/v1/user/client/", "/v3/api-docs/", "/v2/api-docs/*").permitAll()
 
-                //.antMatchers(HttpMethod.GET, "/api/v1/user/getId/**").hasAnyAuthority("ROLE_Propietario","ROLE_Empleado")
-                //.antMatchers("/api/v1/object/**").hasAuthority("ROLE_Administrador")
                 .anyRequest()
                 .authenticated()
                 .and()

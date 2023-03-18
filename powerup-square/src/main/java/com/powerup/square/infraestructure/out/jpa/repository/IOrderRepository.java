@@ -14,5 +14,8 @@ public interface IOrderRepository extends JpaRepository<OrderEntity, Long> {
 
     boolean existsByIdClient(Long idClient);
 
+
+
+    // metodos para datos paginados
     List<OrderEntity> getOrdersByState(String state, Pageable pageable);
 }

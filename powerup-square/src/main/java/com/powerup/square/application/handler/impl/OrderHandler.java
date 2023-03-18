@@ -63,7 +63,7 @@ public class OrderHandler implements IOrderHandler {
            // save order cliente
         if(iOrderServicePort.existsByIdClient(order.getIdClient())) {
 
-
+            // validar si el cliente ya tiene un pedido
             if(iOrderServicePort.getOrderByIdClient(order.getIdClient()).getState() != "save") {
                 throw new PendingExistsException();
             }
@@ -71,9 +71,6 @@ public class OrderHandler implements IOrderHandler {
 
 
         // Validar si el id del plato corresponde al restaurante
-
-
-
        for(int x = 0; x<=orderRequest.getIdPlates().size()-1;x++) {
             if(iPlateServicePort.getPlate(orderRequest.getIdPlates().get(x)).getRestaurant().getId() !=
                     orderRequest.getIdRestaurant()) {
