@@ -17,12 +17,12 @@ import java.util.Optional;
 
 public interface IOrderMapper {
 
-    @Mappings({
+  /*  @Mappings({
             @Mapping(target="id", source="id"),
             @Mapping(target="idClient", source="idClient"),
             @Mapping(target="date", source="date"),
             @Mapping(target="state", source="state")
-    })
+    })*/
     List<Order> toOrder(List<OrderEntity> orderEntity);
     OrderEntity toEntity(Order order);
     Order toOrder(OrderEntity orderEntity);

@@ -18,4 +18,8 @@ public interface IOrderServicePort {
     Order getOrderByIdClient(Long idClient);
     boolean existsByIdClient(Long idClient);
 
+    void updateOrderAssign(List<Order> order);
+
+    Order getOrderById(Long idOrder);
+
 }

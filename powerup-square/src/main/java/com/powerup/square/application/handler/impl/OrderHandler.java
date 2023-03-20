@@ -3,6 +3,7 @@ package com.powerup.square.application.handler.impl;
 import com.powerup.square.application.dto.OrderRequest;
 import com.powerup.square.application.dto.OrderResponse;
 import com.powerup.square.application.dto.OrderState;
+import com.powerup.square.application.dto.OrderUpdateStateRequest;
 import com.powerup.square.application.handler.IOrderHandler;
 import com.powerup.square.application.mapper.IOrderRequestMapper;
 import com.powerup.square.application.mapper.IOrderResponseMapper;
@@ -50,6 +51,21 @@ public class OrderHandler implements IOrderHandler {
         this.iPlateServicePort = iPlateServicePort;
     }
 
+
+    @Override
+    public void updateOrderAssign(OrderUpdateStateRequest orderUpdateStateRequest) {
+        List<Order> orderUpdated = new ArrayList<>();
+        for(Long idOrder: orderUpdateStateRequest.getIdOrders()) {
+            Order order = iOrderServicePort.getOrderById(idOrder);
+            order.setState("Preparando");
+
+           // order.setIdEmployee(orderUpdateStateRequest.getIdEmployee());
+
+            orderUpdated.add(order);
+        }
+
+        iOrderServicePort.updateOrderAssign(orderUpdated);
+    }
 
     @Override
     public List<OrderResponse> getAllOrdersByState(int page, int size, OrderState orderState) {

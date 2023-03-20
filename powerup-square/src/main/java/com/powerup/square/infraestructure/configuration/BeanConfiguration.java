@@ -67,17 +67,20 @@ public class BeanConfiguration {
         return new EmployeeUseCase(employeePersistencePort());
     }
 
-////
-
-@Bean
-public IOrderPersistencePort orderPersistencePort(){
-    return new OrderJpaAdapter(orderRepository, orderMapper);
-}
 
     @Bean
     public IOrderServicePort orderServicePort(){
         return new OrderUseCase(orderPersistencePort());
     }
+
+////
+
+@Bean
+public IOrderPersistencePort orderPersistencePort(){
+    return new OrderJpaAdapter(orderRepository, employeeRepository, orderMapper);
+}
+
+
 
     @Bean
     public IOrderPlatesPersistencePort orderPlatesPersistencePort(){
