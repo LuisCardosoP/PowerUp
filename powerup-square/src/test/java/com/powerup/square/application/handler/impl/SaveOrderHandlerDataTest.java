@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SaveOrderHandlerDataTest {
 
-    public static Order obtainOrder() {
+  /*  public static Order obtainOrder() {
         return  new Order(1L,
                 2L,
                 new Date(),
@@ -17,7 +17,7 @@ public class SaveOrderHandlerDataTest {
                 null
                 );
     }
-
+*/
     public static OrderRequest obtainOrderRequest() {
         OrderRequest orderRequest = new OrderRequest();
         orderRequest.setIdClient(2L);

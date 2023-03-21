@@ -47,4 +47,6 @@ public class RestaurantJpaAdapter implements IRestaurantPersistencePort {
         return restaurantRepository.findAll(pageable).stream().map(restaurantMapper::toRestaurant).collect(Collectors.toList());
     }
 
+
+
 }

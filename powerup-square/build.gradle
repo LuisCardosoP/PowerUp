@@ -35,6 +35,10 @@ dependencies {
 	compileOnly "org.projectlombok:lombok:${lombokVersion}"
 
 	developmentOnly "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+	implementation 'com.twilio.sdk:twilio:8.35.0'
+	implementation 'com.vaadin.external.google:android-json:0.0.20131108.vaadin1'
+	implementation 'net.minidev:json-smart:2.4.8'
+	implementation 'com.google.code.gson:gson:2.10.1'
 
 	implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
 	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
@@ -48,8 +52,6 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
-
-   //security-jwt
 
 }
 

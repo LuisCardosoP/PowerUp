@@ -14,7 +14,6 @@ spring:
     hibernate:
       ddl-auto: update
 
-
   datasource:
     url: jdbc:mysql://localhost:3306/plazoleta
     username : root
@@ -22,3 +21,9 @@ spring:
 
 server:
   port: 8282
+
+twilio:
+   account:
+     sid: AC0db616a004744b5d4bd52b2d2e824118
+   auth:
+     token: 02ececab85c95ac32dfbebc843fc56a1

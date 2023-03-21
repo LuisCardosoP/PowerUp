@@ -92,6 +92,9 @@ public IOrderPersistencePort orderPersistencePort(){
         return new OrderPlatesUseCase(orderPlatesPersistencePort());
     }
 
-
+    @Bean
+    public TwilioConfiguration twilioConfiguration(){
+        return new TwilioConfiguration();
+    }
 
 }

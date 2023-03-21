@@ -1,10 +1,7 @@
 package com.powerup.square.infraestructure.input.rest;
 
 
-import com.powerup.square.application.dto.OrderRequest;
-import com.powerup.square.application.dto.OrderResponse;
-import com.powerup.square.application.dto.OrderState;
-import com.powerup.square.application.dto.OrderUpdateStateRequest;
+import com.powerup.square.application.dto.*;
 import com.powerup.square.application.handler.impl.OrderHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -60,4 +57,17 @@ public class OrderRestController {
         orderHandler.updateOrderAssign(orderUpdateStateRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+
+    @Operation(summary = "Notify order OK")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "", content = @Content),
+            @ApiResponse(responseCode = "400", description = "", content = @Content)
+    })
+    @PostMapping("/notifyOrderIsOK")
+    public ResponseEntity<Void>  notifyOrderIsOkEntity(@RequestBody OrderOkRequest orderOkRequest){
+        orderHandler.OrderOkNotify(orderOkRequest);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }
+

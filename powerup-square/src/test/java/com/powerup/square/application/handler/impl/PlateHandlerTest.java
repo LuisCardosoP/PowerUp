@@ -44,23 +44,19 @@ class PlateHandlerTest {
 
     @Test
     void savePlate() {
-        //Given
+
         Plate plate = SavePlateHandlerDataTest.obtainPlate();
         PlateRequest plateRequest = SavePlateHandlerDataTest.obtainPlateRequest();
 
-        //When
+
         when(iPlateRequestMapper.toPlate(plateRequest)).thenReturn(plate);
-//        when(!iRestaurantPersistencePort.existByIdOwner(anyLong()))
-//                .thenThrow(new NoDataFoundException())
-//                        .thenReturn(Optional.empty().isPresent());
+
         plate.setRestaurant(iRestaurantPersistencePort.getRestaurant(anyLong()));
         plate.setCategory(iCategoryPersistencePort.getCategory(anyLong()));
         plate.setId(anyLong());
 
         plateHandler.savePlate(plateRequest);
 
-
-        //Then
         verify(iPlateServicePort).savePlate(plate);
 
 
@@ -110,5 +106,8 @@ class PlateHandlerTest {
 
         verify(iPlateResponseMapper).toPlateResponseList(iPlateServicePort.getPlatesRestaurant(plateListRequest));
     }
+
+
+
 
 }

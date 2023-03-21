@@ -34,12 +34,14 @@ public class SaveRestaurantHandlerDataTest {
     public static RestaurantRequest obtainRestaurantRequest(){
         RestaurantRequest restaurantRequest = new RestaurantRequest();
 
-        restaurantRequest.setName(" Hamburguers");
-        restaurantRequest.setAddress("Street 25");
+        restaurantRequest.setName(" la hamburgueseria");
+        restaurantRequest.setAddress("calle  25");
         restaurantRequest.setIdOwner(10L);
-        restaurantRequest.setPhone("3013218520");
+
+
+        restaurantRequest.setPhone("3013237026");
         restaurantRequest.setUrlLogo("www.holaa.es");
-        restaurantRequest.setNit("31534564");
+        restaurantRequest.setNit("31534434");
 
         return restaurantRequest;
     }

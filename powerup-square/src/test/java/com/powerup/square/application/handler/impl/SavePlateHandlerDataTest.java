@@ -18,7 +18,7 @@ public class SavePlateHandlerDataTest {
                         "Hamburger",
                         "Has 2 breads"
                 ),
-                "Have nachos, sour cream, guacamole and pico de gallo",
+                "carne y pollo",
                 15L,
                 new Restaurant(
                         100L,
@@ -61,7 +61,10 @@ public class SavePlateHandlerDataTest {
         PlateUpdatingRequest plateUpdatingRequest = new PlateUpdatingRequest();
 
         plateUpdatingRequest.setId(100L);
-        plateUpdatingRequest.setDescription("Pizza ");
+        plateUpdatingRequest.setDescription("empanada");
+
+
+
         plateUpdatingRequest.setPrice(15L);
         plateUpdatingRequest.setIdOwner(2L);
 

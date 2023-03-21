@@ -1,27 +1,29 @@
 package com.powerup.square.application.handler.impl;
 
-import com.powerup.square.application.dto.OrderRequest;
-import com.powerup.square.application.dto.OrderResponse;
-import com.powerup.square.application.dto.OrderState;
-import com.powerup.square.application.dto.OrderUpdateStateRequest;
+import com.google.gson.Gson;
+import com.powerup.square.application.dto.*;
 import com.powerup.square.application.handler.IOrderHandler;
 import com.powerup.square.application.mapper.IOrderRequestMapper;
 import com.powerup.square.application.mapper.IOrderResponseMapper;
 import com.powerup.square.domain.api.*;
 import com.powerup.square.domain.exception.OrderAssignedAlreadyException;
+import com.powerup.square.domain.exception.OrderDoNotExistsException;
 import com.powerup.square.domain.exception.PendingExistsException;
 
 import com.powerup.square.domain.exception.PlateIsNotRestaurantException;
 import com.powerup.square.domain.model.Order;
 import com.powerup.square.domain.model.OrderPlates;
 import com.powerup.square.domain.spi.IPlatePersistencePort;
+import com.powerup.square.infraestructure.configuration.TwilioConfiguration;
+import net.minidev.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-
+import java.lang.Math;
 @Service
 @Transactional
 
@@ -39,7 +41,9 @@ public class OrderHandler implements IOrderHandler {
     private final IPlatePersistencePort iPlatePersistencePort;
     private final IPlateServicePort iPlateServicePort;
 
-    public OrderHandler(IEmployeeServicePort iEmployeeServicePort, IOrderServicePort iOrderServicePort, IOrderRequestMapper iOrderRequestMapper, IOrderResponseMapper iOrderResponseMapper, IOrderPlatesServicePort iOrderPlatesServicePort, IRestaurantServicePort iRestaurantServicePort, IPlatePersistencePort iPlatePersistencePort, IPlateServicePort iPlateServicePort) {
+    private final TwilioConfiguration twilioConfiguration;
+
+    public OrderHandler(IEmployeeServicePort iEmployeeServicePort, IOrderServicePort iOrderServicePort, IOrderRequestMapper iOrderRequestMapper, IOrderResponseMapper iOrderResponseMapper, IOrderPlatesServicePort iOrderPlatesServicePort, IRestaurantServicePort iRestaurantServicePort, IPlatePersistencePort iPlatePersistencePort, IPlateServicePort iPlateServicePort, TwilioConfiguration twilioConfiguration) {
         this.iEmployeeServicePort = iEmployeeServicePort;
         this.iOrderServicePort = iOrderServicePort;
         this.iOrderRequestMapper = iOrderRequestMapper;
@@ -48,6 +52,7 @@ public class OrderHandler implements IOrderHandler {
         this.iRestaurantServicePort = iRestaurantServicePort;
         this.iPlatePersistencePort = iPlatePersistencePort;
         this.iPlateServicePort = iPlateServicePort;
+        this.twilioConfiguration = twilioConfiguration;
     }
 
 
@@ -134,6 +139,23 @@ public class OrderHandler implements IOrderHandler {
 
         //Saving data in order_plates table
         iOrderPlatesServicePort.saveOrderPlates(listOrderPlates);
+
+    }
+
+    @Override
+    public void OrderOkNotify(OrderOkRequest orderOkRequest) {
+
+
+
+        Order order = iOrderServicePort.getOrderByIdClient(orderOkRequest.getIdClient());
+        order.setState("Listo");
+
+        iOrderServicePort.saveOrder(order);
+
+        Double randomPin = Math.random() * (10000 - orderOkRequest.getIdClient()+1);
+        String bodySms = "\n\nHi, your order is finished.\n\nRemember to indicate this PIN number to take your order:\n\n"+Math.round(randomPin);
+        twilioConfiguration.sendSMS(bodySms);
+
 
     }
 

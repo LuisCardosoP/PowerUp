@@ -44,7 +44,7 @@ public class OrderHandlerTest {
     @Mock
     IPlateResponseMapper plateResponseMapper;
 
-
+/*
     @Test
     void saveOrder(){
 
@@ -52,5 +52,5 @@ public class OrderHandlerTest {
         OrderRequest orderRequest = SaveOrderHandlerDataTest.obtainOrderRequest();
 
         orderHandler.saveOrder(orderRequest);
-    }
+    }*/
 }

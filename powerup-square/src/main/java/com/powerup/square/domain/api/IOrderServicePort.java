@@ -1,6 +1,6 @@
 package com.powerup.square.domain.api;
 
-import com.powerup.square.application.dto.OrderRequest;
+
 import com.powerup.square.application.dto.OrderState;
 import com.powerup.square.domain.model.Order;
 
