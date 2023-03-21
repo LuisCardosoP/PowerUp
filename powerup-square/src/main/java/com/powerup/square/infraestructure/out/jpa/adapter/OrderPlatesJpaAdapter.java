@@ -20,6 +20,12 @@ public class OrderPlatesJpaAdapter implements IOrderPlatesPersistencePort {
     @Override
     public void saveOrderPlates(List<OrderPlates> orderPlates) {
         List<OrderPlatesEntity> orderPlatesEntities = new ArrayList<>();
+
+        for(int x = 0; x<=orderPlates.size()-1;x++) {
+
+            orderPlatesEntities.add(orderPlatesMapper.toEntity(orderPlates.get(x)));
+            orderPlatesEntities.get(x).setId(-1L);
+        }
     }
 
     @Override

@@ -69,10 +69,10 @@ public class OrderJpaAdapter implements IOrderPersistencePort {
     @Override
     public void updateOrderAssign(List<Order> orders) {
         List<OrderEntity> ordersEntities = new ArrayList<>();
-       // EmployeeEntity employee = employeeRepository.findByIdUser(orders.get(0).getIdEmployee());
+        EmployeeEntity employee = employeeRepository.findByIdUser(orders.get(0).getIdEmployee());
         for(Order order: orders){
             OrderEntity orderEntity = orderMapper.toEntity(order);
-         //   orderEntity.setEmployee(employee);
+        //    orderEntity.setEmployee(employee);
             ordersEntities.add(orderEntity);
         }
         orderRepository.saveAll(ordersEntities);

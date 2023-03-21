@@ -7,10 +7,8 @@ import com.powerup.square.application.dto.OrderUpdateStateRequest;
 import com.powerup.square.application.handler.IOrderHandler;
 import com.powerup.square.application.mapper.IOrderRequestMapper;
 import com.powerup.square.application.mapper.IOrderResponseMapper;
-import com.powerup.square.domain.api.IOrderPlatesServicePort;
-import com.powerup.square.domain.api.IOrderServicePort;
-import com.powerup.square.domain.api.IPlateServicePort;
-import com.powerup.square.domain.api.IRestaurantServicePort;
+import com.powerup.square.domain.api.*;
+import com.powerup.square.domain.exception.OrderAssignedAlreadyException;
 import com.powerup.square.domain.exception.PendingExistsException;
 
 import com.powerup.square.domain.exception.PlateIsNotRestaurantException;
@@ -28,7 +26,7 @@ import java.util.List;
 @Transactional
 
 public class OrderHandler implements IOrderHandler {
-
+    private final IEmployeeServicePort iEmployeeServicePort;
     private final IOrderServicePort iOrderServicePort;
 
     private final IOrderRequestMapper iOrderRequestMapper;
@@ -41,7 +39,8 @@ public class OrderHandler implements IOrderHandler {
     private final IPlatePersistencePort iPlatePersistencePort;
     private final IPlateServicePort iPlateServicePort;
 
-    public OrderHandler(IOrderServicePort iOrderServicePort, IOrderRequestMapper iOrderRequestMapper, IOrderResponseMapper iOrderResponseMapper, IOrderPlatesServicePort iOrderPlatesServicePort, IRestaurantServicePort iRestaurantServicePort, IPlatePersistencePort iPlatePersistencePort, IPlateServicePort iPlateServicePort) {
+    public OrderHandler(IEmployeeServicePort iEmployeeServicePort, IOrderServicePort iOrderServicePort, IOrderRequestMapper iOrderRequestMapper, IOrderResponseMapper iOrderResponseMapper, IOrderPlatesServicePort iOrderPlatesServicePort, IRestaurantServicePort iRestaurantServicePort, IPlatePersistencePort iPlatePersistencePort, IPlateServicePort iPlateServicePort) {
+        this.iEmployeeServicePort = iEmployeeServicePort;
         this.iOrderServicePort = iOrderServicePort;
         this.iOrderRequestMapper = iOrderRequestMapper;
         this.iOrderResponseMapper = iOrderResponseMapper;
@@ -55,11 +54,25 @@ public class OrderHandler implements IOrderHandler {
     @Override
     public void updateOrderAssign(OrderUpdateStateRequest orderUpdateStateRequest) {
         List<Order> orderUpdated = new ArrayList<>();
-        for(Long idOrder: orderUpdateStateRequest.getIdOrders()) {
+        /*for(Long idOrder: orderUpdateStateRequest.getIdOrders()) {
             Order order = iOrderServicePort.getOrderById(idOrder);
             order.setState("Preparando");
 
-           // order.setIdEmployee(orderUpdateStateRequest.getIdEmployee());
+            order.setIdEmployee(orderUpdateStateRequest.getIdEmployee());
+
+            orderUpdated.add(order);
+        }
+
+        iOrderServicePort.updateOrderAssign(orderUpdated);*/
+        for(Long idOrder: orderUpdateStateRequest.getIdOrders()) {
+            Order order = iOrderServicePort.getOrderById(idOrder);
+
+            //If an order was already assigned, the process will fail
+            if(order.getState().equals("Preparando")){
+                throw new OrderAssignedAlreadyException();
+            }
+            order.setState("Preparando");
+            order.setIdEmployee(orderUpdateStateRequest.getIdEmployee());
 
             orderUpdated.add(order);
         }
@@ -69,6 +82,7 @@ public class OrderHandler implements IOrderHandler {
 
     @Override
     public List<OrderResponse> getAllOrdersByState(int page, int size, OrderState orderState) {
+//        Long restaurantOfTheEmployee = iEmployeeServicePort.getEmployee(orderState.getIdEmployee()).getIdRestaurant();
         return iOrderResponseMapper.toOrderResponseList(iOrderServicePort.getAllOrdersByState(page, size, orderState));
     }
 
@@ -121,5 +135,10 @@ public class OrderHandler implements IOrderHandler {
         //Saving data in order_plates table
         iOrderPlatesServicePort.saveOrderPlates(listOrderPlates);
 
+    }
+
+    @Override
+    public List<OrderPlates> getOrderPlatesById(Long id) {
+        return iOrderPlatesServicePort.getAllOrderPlatesByOrderId(id);
     }
 }

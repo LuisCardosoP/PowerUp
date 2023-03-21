@@ -32,8 +32,10 @@ public class OrderEntity {
 
 
      */
-
-
+   /* @ManyToOne
+    @JoinColumn(name = "id_employee", nullable = false)
+    private EmployeeEntity employee;
+*/
     @ManyToOne
     @JoinColumn(name = "id_restaurant", nullable = false)
     private RestaurantEntity restaurant;
