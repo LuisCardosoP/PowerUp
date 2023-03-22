@@ -26,4 +26,7 @@ twilio:
    account:
      sid: AC0db616a004744b5d4bd52b2d2e824118
    auth:
-     token: 02ececab85c95ac32dfbebc843fc56a1
+     token: 6fc66478c3423f2ea2e1f3b5d83920b1
+
+
+

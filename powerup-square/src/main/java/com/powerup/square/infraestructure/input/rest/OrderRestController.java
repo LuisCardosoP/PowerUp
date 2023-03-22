@@ -69,5 +69,18 @@ public class OrderRestController {
         orderHandler.OrderOkNotify(orderOkRequest);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+
+    @Operation(summary = "Order Canceled")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Client got his order", content = @Content),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content)
+    })
+    @PostMapping("/cancelOrder")
+    public ResponseEntity<Void>  orderToBeCanceledEntity(@Validated @RequestBody OrderCanceledRequest orderCanceledRequest){
+        orderHandler.setOrderToCanceled(orderCanceledRequest);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
 }
 

@@ -15,4 +15,6 @@ public interface IOrderHandler {
 
     void OrderOkNotify(OrderOkRequest orderOkRequest);;
     List<OrderPlates> getOrderPlatesById(Long id);
+
+    void setOrderToCanceled(OrderCanceledRequest orderCanceledRequest);
 }

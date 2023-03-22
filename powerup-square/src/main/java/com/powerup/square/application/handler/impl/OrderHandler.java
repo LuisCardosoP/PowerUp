@@ -6,11 +6,8 @@ import com.powerup.square.application.handler.IOrderHandler;
 import com.powerup.square.application.mapper.IOrderRequestMapper;
 import com.powerup.square.application.mapper.IOrderResponseMapper;
 import com.powerup.square.domain.api.*;
-import com.powerup.square.domain.exception.OrderAssignedAlreadyException;
-import com.powerup.square.domain.exception.OrderDoNotExistsException;
-import com.powerup.square.domain.exception.PendingExistsException;
+import com.powerup.square.domain.exception.*;
 
-import com.powerup.square.domain.exception.PlateIsNotRestaurantException;
 import com.powerup.square.domain.model.Order;
 import com.powerup.square.domain.model.OrderPlates;
 import com.powerup.square.domain.spi.IPlatePersistencePort;
@@ -145,15 +142,13 @@ public class OrderHandler implements IOrderHandler {
     @Override
     public void OrderOkNotify(OrderOkRequest orderOkRequest) {
 
-
-
         Order order = iOrderServicePort.getOrderByIdClient(orderOkRequest.getIdClient());
         order.setState("Listo");
 
         iOrderServicePort.saveOrder(order);
 
         Double randomPin = Math.random() * (10000 - orderOkRequest.getIdClient()+1);
-        String bodySms = "\n\nHi, your order is finished.\n\nRemember to indicate this PIN number to take your order:\n\n"+Math.round(randomPin);
+        String bodySms = "\n\nHola! tu orden ya está lista.\n\n Recuerda tu PIN::\n\n"+Math.round(randomPin);
         twilioConfiguration.sendSMS(bodySms);
 
 
@@ -163,4 +158,29 @@ public class OrderHandler implements IOrderHandler {
     public List<OrderPlates> getOrderPlatesById(Long id) {
         return iOrderPlatesServicePort.getAllOrderPlatesByOrderId(id);
     }
-}
+
+    @Override
+    public void setOrderToCanceled(OrderCanceledRequest orderCanceledRequest) {
+        // Order exists
+        if(!iOrderServicePort.existsByIdClient(orderCanceledRequest.getIdClient())){
+            throw new OrderDoNotExistsException();
+        }
+
+        Order order = iOrderServicePort.getOrderByIdClient(orderCanceledRequest.getIdClient());
+        //Only pending orders are allowed to be canceled
+        if(!order.getState()
+                .equals("Pendiente"))
+        {
+            String body = "We're sorry, your order was already taken by the restaurant and can't be canceled";
+            twilioConfiguration.sendSMS(body);
+            throw new OrderIsNotPendingException();
+        }
+
+        order.setState("Cancelado");
+        iOrderServicePort.saveOrder(order);
+
+        String body = "Tu orden fue cancelada";
+        twilioConfiguration.sendSMS(body);
+    }
+    }
+

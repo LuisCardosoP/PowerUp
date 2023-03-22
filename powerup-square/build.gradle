@@ -36,6 +36,9 @@ dependencies {
 
 	developmentOnly "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
 	implementation 'com.twilio.sdk:twilio:8.35.0'
+
+
+
 	implementation 'com.vaadin.external.google:android-json:0.0.20131108.vaadin1'
 	implementation 'net.minidev:json-smart:2.4.8'
 	implementation 'com.google.code.gson:gson:2.10.1'
