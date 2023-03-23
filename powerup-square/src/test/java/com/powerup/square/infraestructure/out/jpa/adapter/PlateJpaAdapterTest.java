@@ -49,11 +49,12 @@ class PlateJpaAdapterTest {
     void getAllPlates() {
     }
 
-//    @Test
-//    void getPlate() {
-//        plateJpaAdapter.getPlate(anyLong());
-//        verify(iPlateMapper).toPlate(iPlateRepository.findById(anyLong()).get());
-//    }
+    /*
+    @Test
+   void getPlate() {
+       plateJpaAdapter.getPlate(anyLong());
+        verify(iPlateMapper).toPlate(iPlateRepository.findById(anyLong()).get());
+    }*/
 
     @Test
     void updatePlate() {

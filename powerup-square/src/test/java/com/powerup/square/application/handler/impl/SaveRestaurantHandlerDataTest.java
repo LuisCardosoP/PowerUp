@@ -14,7 +14,7 @@ public class SaveRestaurantHandlerDataTest {
                 "Street 55",
                 10L,
                 "3013218534243240",
-                "www.hola.es",
+                "www.hola.com",
                 "12315645459"
         );
 

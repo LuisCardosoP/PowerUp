@@ -31,19 +31,8 @@ class PlateUseCaseTest {
     void savePlate() {
 
         Plate plate = SavePlateUseCaseDataTest.obtainPlate();
-
-//        when(existByName(plate.getName())).thenReturn(Optional.empty());
         plateUseCase.savePlate(plate);
-
         verify(iPlatePersistencePort).savePlate(plate);
-    }
-
-    @Test
-    void getAllPlates() {
-    }
-
-    @Test
-    void getPlate() {
     }
 
     @Test
@@ -51,7 +40,6 @@ class PlateUseCaseTest {
 
         Plate plate = SavePlateUseCaseDataTest.obtainPlate();
         plateUseCase.updatePlate(plate);
-
         verify(iPlatePersistencePort).updatePlate(plate);
 
     }
